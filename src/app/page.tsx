@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { sanityFetch } from "@/sanity/lib/live";
 import { GIVEAWAY_QUERY } from "@/sanity/lib/queries";
 import type { SanityGiveaway } from "@/sanity/types";
-import ComingSoonClient from "./ComingSoonClient";
+import ComingSoonClient from "./(site)/ComingSoonClient";
 
 export const metadata = {
   title: "Boatify — Coming Soon",
