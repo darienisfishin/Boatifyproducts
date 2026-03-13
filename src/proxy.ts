@@ -6,7 +6,7 @@ const PUBLIC_PATHS = [
   "/api/chat",
 ];
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Always allow: Next.js internals, static files, Sanity Studio, API unlock
