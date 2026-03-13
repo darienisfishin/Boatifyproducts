@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  password       String
+  name           String
+  company        String?
+  phone          String?
+  role           String          @default("customer") // customer | oem | admin
+  address        String?
+  city           String?
+  state          String?
+  zip            String?
+  taxId          String?
+  territory      String? // geographic territory (e.g., "TX", "Southeast")
+  salesRepId     String?
+  salesRep       SalesRep?       @relation(fields: [salesRepId], references: [id])
+  notifyEmail    Boolean         @default(true)
+  notifyPhone    Boolean         @default(false)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  purchaseOrders PurchaseOrder[]
+  quotes         Quote[]
+}
+
+model SalesRep {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  territory String // e.g., "TX", "Southeast", "National"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  quotes    Quote[]
+  users     User[]
+}
+
+model Product {
+  id               String            @id @default(uuid())
+  sku              String            @unique
+  name             String
+  slug             String            @unique
+  description      String
+  price            Float
+  category         String
+  image            String
+  brand            String            @default("Boatify")
+  productType      String            @default("part") // part | apparel
+  wholesalePrice   Float?
+  inStock          Boolean           @default(true)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  orderItems       OrderItem[]
+  quoteItems       QuoteItem[]
+  boatPartMappings BoatPartMapping[]
+}
+
+model PurchaseOrder {
+  id          String      @id @default(uuid())
+  poNumber    String      @unique
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  status      String      @default("pending") // pending | confirmed | in_production | shipped | delivered
+  totalAmount Float
+  poFile      String?
+  notes       String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  items       OrderItem[]
+}
+
+model OrderItem {
+  id              String        @id @default(uuid())
+  purchaseOrderId String
+  purchaseOrder   PurchaseOrder @relation(fields: [purchaseOrderId], references: [id])
+  productId       String
+  product         Product       @relation(fields: [productId], references: [id])
+  quantity        Int
+  unitPrice       Float
+  totalPrice      Float
+}
+
+model Quote {
+  id          String      @id @default(uuid())
+  quoteNumber String      @unique
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  salesRepId  String
+  salesRep    SalesRep    @relation(fields: [salesRepId], references: [id])
+  status      String      @default("pending") // pending | reviewed | quoted | accepted | expired
+  notes       String?
+  totalAmount Float?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  items       QuoteItem[]
+}
+
+model QuoteItem {
+  id        String  @id @default(uuid())
+  quoteId   String
+  quote     Quote   @relation(fields: [quoteId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  notes     String?
+}
+
+model ContactSubmission {
+  id           String   @id @default(uuid())
+  companyName  String
+  contactName  String
+  email        String
+  phone        String
+  address      String
+  city         String
+  state        String
+  zip          String
+  taxId        String?
+  website      String?
+  boatBrands   String?
+  annualVolume String?
+  message      String?
+  createdAt    DateTime @default(now())
+}
+
+model BoatPartMapping {
+  id        String  @id @default(uuid())
+  boatType  String // pontoon | bass
+  zone      String // bow, stern, helm, deck, etc.
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  posX      Float // percentage position on diagram
+  posY      Float
+}

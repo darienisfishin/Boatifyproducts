@@ -1,26 +1,444 @@
 @import "tailwindcss";
 
 :root {
+  --ocean-50: #e8fffe;
+  --ocean-100: #c5fcfa;
+  --ocean-200: #8ef8f5;
+  --ocean-300: #4aeee9;
+  --ocean-400: #14d9d5;
+  --ocean-500: #00bfbb;
+  --ocean-600: #009e9c;
+  --ocean-700: #007f7e;
+  --ocean-800: #006464;
+  --ocean-900: #004f50;
+  --ocean-950: #003538;
+
+  --marine-50: #edfff7;
+  --marine-100: #d5ffed;
+  --marine-200: #a8ffdb;
+  --marine-300: #6bffc4;
+  --marine-400: #2bffa7;
+  --marine-500: #00e88a;
+  --marine-600: #00c06e;
+  --marine-700: #009959;
+  --marine-800: #007747;
+  --marine-900: #00613b;
+
+  --deep-50: #eef4ff;
+  --deep-100: #d9e6ff;
+  --deep-200: #b3cdff;
+  --deep-300: #7eaaff;
+  --deep-400: #4d88ff;
+  --deep-500: #2563eb;
+  --deep-600: #1a4fc9;
+  --deep-700: #153ea2;
+  --deep-800: #123380;
+  --deep-900: #0f2a6b;
+
+  --sun-400: #fbbf24;
+  --sun-500: #f59e0b;
+
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-ocean-50: var(--ocean-50);
+  --color-ocean-100: var(--ocean-100);
+  --color-ocean-200: var(--ocean-200);
+  --color-ocean-300: var(--ocean-300);
+  --color-ocean-400: var(--ocean-400);
+  --color-ocean-500: var(--ocean-500);
+  --color-ocean-600: var(--ocean-600);
+  --color-ocean-700: var(--ocean-700);
+  --color-ocean-800: var(--ocean-800);
+  --color-ocean-900: var(--ocean-900);
+  --color-ocean-950: var(--ocean-950);
+  --color-marine-50: var(--marine-50);
+  --color-marine-100: var(--marine-100);
+  --color-marine-200: var(--marine-200);
+  --color-marine-300: var(--marine-300);
+  --color-marine-400: var(--marine-400);
+  --color-marine-500: var(--marine-500);
+  --color-marine-600: var(--marine-600);
+  --color-marine-700: var(--marine-700);
+  --color-marine-800: var(--marine-800);
+  --color-marine-900: var(--marine-900);
+  --color-deep-50: var(--deep-50);
+  --color-deep-100: var(--deep-100);
+  --color-deep-200: var(--deep-200);
+  --color-deep-300: var(--deep-300);
+  --color-deep-400: var(--deep-400);
+  --color-deep-500: var(--deep-500);
+  --color-deep-600: var(--deep-600);
+  --color-deep-700: var(--deep-700);
+  --color-deep-800: var(--deep-800);
+  --color-deep-900: var(--deep-900);
+  --color-sun-400: var(--sun-400);
+  --color-sun-500: var(--sun-500);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ======================================
+   ANIMATIONS - fun, lively, inviting
+   ====================================== */
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(5); opacity: 0; }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0) translateZ(0) scaleY(1); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(0.6); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(1deg); }
+  75% { transform: translateY(-4px) rotate(-1deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes droplet {
+  0% { transform: translateY(-20px) scale(0); opacity: 0; }
+  40% { transform: translateY(0) scale(1.2); opacity: 0.8; }
+  60% { transform: translateY(2px) scale(0.9); opacity: 0.6; }
+  100% { transform: translateY(15px) scale(0.3); opacity: 0; }
+}
+
+@keyframes splash-in {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 191, 187, 0.7); }
+  50% { transform: scale(1.15); box-shadow: 0 0 0 12px rgba(0, 191, 187, 0); }
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(0, 191, 187, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(0, 232, 138, 0.6)); }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-ripple { animation: ripple 1.2s ease-out forwards; }
+.animate-wave { animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-bob { animation: bob 3s ease-in-out infinite; }
+.animate-droplet { animation: droplet 2.5s ease-in-out infinite; }
+.animate-splash-in { animation: splash-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-glow { animation: glow 3s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.5s ease-out forwards; }
+.animate-wiggle { animation: wiggle 0.5s ease-in-out; }
+.animate-slide-in-right { animation: slide-in-right 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+/* ======================================
+   WATER TEXTURES & BACKGROUNDS
+   ====================================== */
+
+.water-texture {
+  background-image:
+    radial-gradient(ellipse at 15% 50%, rgba(0, 191, 187, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 25%, rgba(0, 232, 138, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%, rgba(37, 99, 235, 0.05) 0%, transparent 40%);
+}
+
+.wave-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-bg::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z' fill='%2300bfbb' fill-opacity='0.1'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 1200px 100px;
+  animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+/* ======================================
+   BUTTONS - playful splash on click
+   ====================================== */
+
+.splash-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.splash-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.splash-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.splash-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.splash-btn:active::after {
+  width: 400px;
+  height: 400px;
+}
+
+/* Fun CTA button - bigger, bolder */
+.fun-cta {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 20px rgba(0, 191, 187, 0.3), 0 0 0 0 rgba(0, 232, 138, 0);
+}
+
+.fun-cta:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 191, 187, 0.4), 0 0 40px rgba(0, 232, 138, 0.15);
+}
+
+.fun-cta:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* ======================================
+   WATER DROPLETS
+   ====================================== */
+
+.water-drop {
+  position: relative;
+}
+
+.water-drop::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  background: linear-gradient(135deg, rgba(0, 191, 187, 0.5), rgba(0, 232, 138, 0.3));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  top: -8px;
+  right: -5px;
+  animation: droplet 3s ease-in-out infinite;
+}
+
+/* ======================================
+   GRADIENT TEXT - more vivid
+   ====================================== */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--ocean-500), var(--marine-500), var(--deep-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-fun {
+  background: linear-gradient(135deg, #00bfbb, #00e88a, #4d88ff, #00bfbb);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease infinite;
+}
+
+/* ======================================
+   GLASS MORPHISM
+   ====================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(0, 53, 56, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 191, 187, 0.15);
+}
+
+/* ======================================
+   INTERACTIVE BOAT DOT - livelier
+   ====================================== */
+
+.boat-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ocean-400), var(--marine-500));
+  border: 3px solid white;
+  box-shadow: 0 0 0 0 rgba(0, 191, 187, 0.7), 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.boat-dot:hover {
+  background: linear-gradient(135deg, var(--ocean-300), var(--marine-400));
+  transform: scale(1.4) !important;
+  animation: none;
+  box-shadow: 0 0 24px rgba(0, 191, 187, 0.6), 0 0 48px rgba(0, 232, 138, 0.2);
+}
+
+/* ======================================
+   SCROLLBAR
+   ====================================== */
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--ocean-50); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--ocean-300), var(--marine-400)); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--ocean-400), var(--marine-500)); }
+
+/* ======================================
+   CARDS - more dynamic hover
+   ====================================== */
+
+.product-card {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 50px rgba(0, 191, 187, 0.18), 0 0 0 1px rgba(0, 191, 187, 0.1);
+}
+
+.brand-card {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brand-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 191, 187, 0.15);
+}
+
+/* ======================================
+   FORMS
+   ====================================== */
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300bfbb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Fun focus states */
+input:focus, select:focus, textarea:focus {
+  border-color: var(--ocean-400) !important;
+  box-shadow: 0 0 0 3px rgba(0, 191, 187, 0.15), 0 0 20px rgba(0, 191, 187, 0.08) !important;
+}
+
+/* ======================================
+   BOAT PHOTO OVERLAY - for real images
+   ====================================== */
+
+.boat-photo-container {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.boat-photo-container img {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.boat-photo-container:hover img {
+  transform: scale(1.03);
+}
+
+.boat-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 53, 56, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* ======================================
+   FUN TAG / BADGE
+   ====================================== */
+
+.fun-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(0, 191, 187, 0.15), rgba(0, 232, 138, 0.1));
+  color: var(--ocean-700);
+  border: 1px solid rgba(0, 191, 187, 0.2);
+  transition: all 0.3s ease;
+}
+
+.fun-badge:hover {
+  background: linear-gradient(135deg, rgba(0, 191, 187, 0.25), rgba(0, 232, 138, 0.15));
+  transform: scale(1.05);
 }
