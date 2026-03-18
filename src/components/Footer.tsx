@@ -50,9 +50,10 @@ export default function Footer() {
             <h3 className="font-extrabold text-sm uppercase tracking-wider text-ocean-300 mb-4">Shop</h3>
             <ul className="space-y-2.5">
               <FooterLink href="/shop" emoji="&#x1F6D2;">All Products</FooterLink>
-              <FooterLink href="/shop?category=Lighting+%26+Electrical" emoji="&#x1F4A1;">Lighting</FooterLink>
-              <FooterLink href="/shop?category=Deck+Hardware" emoji="&#x2693;">Deck Hardware</FooterLink>
-              <FooterLink href="/shop?category=Steering+%26+Controls" emoji="&#x1F3AF;">Steering</FooterLink>
+              <FooterLink href="/shop?category=Jack+Plates" emoji="&#x2699;">Jack Plates</FooterLink>
+              <FooterLink href="/shop?category=Transducer+Shields" emoji="&#x1F6E1;">Transducer Shields</FooterLink>
+              <FooterLink href="/shop?category=Lithium+Batteries" emoji="&#x26A1;">Lithium Batteries</FooterLink>
+              <FooterLink href="/shop?category=Apparel" emoji="&#x1F455;">Apparel</FooterLink>
             </ul>
           </div>
 

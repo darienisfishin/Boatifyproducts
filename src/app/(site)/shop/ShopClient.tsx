@@ -10,11 +10,13 @@ interface Props {
   products: SanityProduct[];
   categories: string[];
   brands: string[];
+  initialCategory?: string;
+  initialBrand?: string;
 }
 
-export default function ShopClient({ products, categories, brands }: Props) {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [selectedBrand, setSelectedBrand] = useState<string>("All");
+export default function ShopClient({ products, categories, brands, initialCategory = "All", initialBrand = "All" }: Props) {
+  const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
+  const [selectedBrand, setSelectedBrand] = useState<string>(initialBrand);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filtered = products.filter((p) => {
