@@ -58,6 +58,11 @@ export type ContactSubmission = $Result.DefaultSelection<Prisma.$ContactSubmissi
  * 
  */
 export type BoatPartMapping = $Result.DefaultSelection<Prisma.$BoatPartMappingPayload>
+/**
+ * Model GiveawayEntry
+ * 
+ */
+export type GiveawayEntry = $Result.DefaultSelection<Prisma.$GiveawayEntryPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -269,6 +274,16 @@ export class PrismaClient<
     * ```
     */
   get boatPartMapping(): Prisma.BoatPartMappingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.giveawayEntry`: Exposes CRUD operations for the **GiveawayEntry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GiveawayEntries
+    * const giveawayEntries = await prisma.giveawayEntry.findMany()
+    * ```
+    */
+  get giveawayEntry(): Prisma.GiveawayEntryDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -711,7 +726,8 @@ export namespace Prisma {
     Quote: 'Quote',
     QuoteItem: 'QuoteItem',
     ContactSubmission: 'ContactSubmission',
-    BoatPartMapping: 'BoatPartMapping'
+    BoatPartMapping: 'BoatPartMapping',
+    GiveawayEntry: 'GiveawayEntry'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -727,7 +743,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "salesRep" | "product" | "purchaseOrder" | "orderItem" | "quote" | "quoteItem" | "contactSubmission" | "boatPartMapping"
+      modelProps: "user" | "salesRep" | "product" | "purchaseOrder" | "orderItem" | "quote" | "quoteItem" | "contactSubmission" | "boatPartMapping" | "giveawayEntry"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1397,6 +1413,80 @@ export namespace Prisma {
           }
         }
       }
+      GiveawayEntry: {
+        payload: Prisma.$GiveawayEntryPayload<ExtArgs>
+        fields: Prisma.GiveawayEntryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GiveawayEntryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GiveawayEntryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          findFirst: {
+            args: Prisma.GiveawayEntryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GiveawayEntryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          findMany: {
+            args: Prisma.GiveawayEntryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>[]
+          }
+          create: {
+            args: Prisma.GiveawayEntryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          createMany: {
+            args: Prisma.GiveawayEntryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GiveawayEntryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>[]
+          }
+          delete: {
+            args: Prisma.GiveawayEntryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          update: {
+            args: Prisma.GiveawayEntryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          deleteMany: {
+            args: Prisma.GiveawayEntryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GiveawayEntryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GiveawayEntryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>[]
+          }
+          upsert: {
+            args: Prisma.GiveawayEntryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GiveawayEntryPayload>
+          }
+          aggregate: {
+            args: Prisma.GiveawayEntryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGiveawayEntry>
+          }
+          groupBy: {
+            args: Prisma.GiveawayEntryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GiveawayEntryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GiveawayEntryCountArgs<ExtArgs>
+            result: $Utils.Optional<GiveawayEntryCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1514,6 +1604,7 @@ export namespace Prisma {
     quoteItem?: QuoteItemOmit
     contactSubmission?: ContactSubmissionOmit
     boatPartMapping?: BoatPartMappingOmit
+    giveawayEntry?: GiveawayEntryOmit
   }
 
   /* Types for Logging */
@@ -12287,6 +12378,1012 @@ export namespace Prisma {
 
 
   /**
+   * Model GiveawayEntry
+   */
+
+  export type AggregateGiveawayEntry = {
+    _count: GiveawayEntryCountAggregateOutputType | null
+    _min: GiveawayEntryMinAggregateOutputType | null
+    _max: GiveawayEntryMaxAggregateOutputType | null
+  }
+
+  export type GiveawayEntryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    boatBrand: string | null
+    marketingConsent: boolean | null
+    createdAt: Date | null
+  }
+
+  export type GiveawayEntryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    email: string | null
+    boatBrand: string | null
+    marketingConsent: boolean | null
+    createdAt: Date | null
+  }
+
+  export type GiveawayEntryCountAggregateOutputType = {
+    id: number
+    name: number
+    email: number
+    boatBrand: number
+    marketingConsent: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type GiveawayEntryMinAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    boatBrand?: true
+    marketingConsent?: true
+    createdAt?: true
+  }
+
+  export type GiveawayEntryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    boatBrand?: true
+    marketingConsent?: true
+    createdAt?: true
+  }
+
+  export type GiveawayEntryCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    boatBrand?: true
+    marketingConsent?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type GiveawayEntryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiveawayEntry to aggregate.
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiveawayEntries to fetch.
+     */
+    orderBy?: GiveawayEntryOrderByWithRelationInput | GiveawayEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GiveawayEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiveawayEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiveawayEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GiveawayEntries
+    **/
+    _count?: true | GiveawayEntryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GiveawayEntryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GiveawayEntryMaxAggregateInputType
+  }
+
+  export type GetGiveawayEntryAggregateType<T extends GiveawayEntryAggregateArgs> = {
+        [P in keyof T & keyof AggregateGiveawayEntry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGiveawayEntry[P]>
+      : GetScalarType<T[P], AggregateGiveawayEntry[P]>
+  }
+
+
+
+
+  export type GiveawayEntryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GiveawayEntryWhereInput
+    orderBy?: GiveawayEntryOrderByWithAggregationInput | GiveawayEntryOrderByWithAggregationInput[]
+    by: GiveawayEntryScalarFieldEnum[] | GiveawayEntryScalarFieldEnum
+    having?: GiveawayEntryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GiveawayEntryCountAggregateInputType | true
+    _min?: GiveawayEntryMinAggregateInputType
+    _max?: GiveawayEntryMaxAggregateInputType
+  }
+
+  export type GiveawayEntryGroupByOutputType = {
+    id: string
+    name: string
+    email: string
+    boatBrand: string
+    marketingConsent: boolean
+    createdAt: Date
+    _count: GiveawayEntryCountAggregateOutputType | null
+    _min: GiveawayEntryMinAggregateOutputType | null
+    _max: GiveawayEntryMaxAggregateOutputType | null
+  }
+
+  type GetGiveawayEntryGroupByPayload<T extends GiveawayEntryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GiveawayEntryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GiveawayEntryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GiveawayEntryGroupByOutputType[P]>
+            : GetScalarType<T[P], GiveawayEntryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GiveawayEntrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    boatBrand?: boolean
+    marketingConsent?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["giveawayEntry"]>
+
+  export type GiveawayEntrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    boatBrand?: boolean
+    marketingConsent?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["giveawayEntry"]>
+
+  export type GiveawayEntrySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    boatBrand?: boolean
+    marketingConsent?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["giveawayEntry"]>
+
+  export type GiveawayEntrySelectScalar = {
+    id?: boolean
+    name?: boolean
+    email?: boolean
+    boatBrand?: boolean
+    marketingConsent?: boolean
+    createdAt?: boolean
+  }
+
+  export type GiveawayEntryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "boatBrand" | "marketingConsent" | "createdAt", ExtArgs["result"]["giveawayEntry"]>
+
+  export type $GiveawayEntryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GiveawayEntry"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      email: string
+      boatBrand: string
+      marketingConsent: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["giveawayEntry"]>
+    composites: {}
+  }
+
+  type GiveawayEntryGetPayload<S extends boolean | null | undefined | GiveawayEntryDefaultArgs> = $Result.GetResult<Prisma.$GiveawayEntryPayload, S>
+
+  type GiveawayEntryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GiveawayEntryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GiveawayEntryCountAggregateInputType | true
+    }
+
+  export interface GiveawayEntryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GiveawayEntry'], meta: { name: 'GiveawayEntry' } }
+    /**
+     * Find zero or one GiveawayEntry that matches the filter.
+     * @param {GiveawayEntryFindUniqueArgs} args - Arguments to find a GiveawayEntry
+     * @example
+     * // Get one GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GiveawayEntryFindUniqueArgs>(args: SelectSubset<T, GiveawayEntryFindUniqueArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GiveawayEntry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GiveawayEntryFindUniqueOrThrowArgs} args - Arguments to find a GiveawayEntry
+     * @example
+     * // Get one GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GiveawayEntryFindUniqueOrThrowArgs>(args: SelectSubset<T, GiveawayEntryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiveawayEntry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryFindFirstArgs} args - Arguments to find a GiveawayEntry
+     * @example
+     * // Get one GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GiveawayEntryFindFirstArgs>(args?: SelectSubset<T, GiveawayEntryFindFirstArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GiveawayEntry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryFindFirstOrThrowArgs} args - Arguments to find a GiveawayEntry
+     * @example
+     * // Get one GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GiveawayEntryFindFirstOrThrowArgs>(args?: SelectSubset<T, GiveawayEntryFindFirstOrThrowArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GiveawayEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GiveawayEntries
+     * const giveawayEntries = await prisma.giveawayEntry.findMany()
+     * 
+     * // Get first 10 GiveawayEntries
+     * const giveawayEntries = await prisma.giveawayEntry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const giveawayEntryWithIdOnly = await prisma.giveawayEntry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GiveawayEntryFindManyArgs>(args?: SelectSubset<T, GiveawayEntryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GiveawayEntry.
+     * @param {GiveawayEntryCreateArgs} args - Arguments to create a GiveawayEntry.
+     * @example
+     * // Create one GiveawayEntry
+     * const GiveawayEntry = await prisma.giveawayEntry.create({
+     *   data: {
+     *     // ... data to create a GiveawayEntry
+     *   }
+     * })
+     * 
+     */
+    create<T extends GiveawayEntryCreateArgs>(args: SelectSubset<T, GiveawayEntryCreateArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GiveawayEntries.
+     * @param {GiveawayEntryCreateManyArgs} args - Arguments to create many GiveawayEntries.
+     * @example
+     * // Create many GiveawayEntries
+     * const giveawayEntry = await prisma.giveawayEntry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GiveawayEntryCreateManyArgs>(args?: SelectSubset<T, GiveawayEntryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GiveawayEntries and returns the data saved in the database.
+     * @param {GiveawayEntryCreateManyAndReturnArgs} args - Arguments to create many GiveawayEntries.
+     * @example
+     * // Create many GiveawayEntries
+     * const giveawayEntry = await prisma.giveawayEntry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GiveawayEntries and only return the `id`
+     * const giveawayEntryWithIdOnly = await prisma.giveawayEntry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GiveawayEntryCreateManyAndReturnArgs>(args?: SelectSubset<T, GiveawayEntryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GiveawayEntry.
+     * @param {GiveawayEntryDeleteArgs} args - Arguments to delete one GiveawayEntry.
+     * @example
+     * // Delete one GiveawayEntry
+     * const GiveawayEntry = await prisma.giveawayEntry.delete({
+     *   where: {
+     *     // ... filter to delete one GiveawayEntry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GiveawayEntryDeleteArgs>(args: SelectSubset<T, GiveawayEntryDeleteArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GiveawayEntry.
+     * @param {GiveawayEntryUpdateArgs} args - Arguments to update one GiveawayEntry.
+     * @example
+     * // Update one GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GiveawayEntryUpdateArgs>(args: SelectSubset<T, GiveawayEntryUpdateArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GiveawayEntries.
+     * @param {GiveawayEntryDeleteManyArgs} args - Arguments to filter GiveawayEntries to delete.
+     * @example
+     * // Delete a few GiveawayEntries
+     * const { count } = await prisma.giveawayEntry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GiveawayEntryDeleteManyArgs>(args?: SelectSubset<T, GiveawayEntryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiveawayEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GiveawayEntries
+     * const giveawayEntry = await prisma.giveawayEntry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GiveawayEntryUpdateManyArgs>(args: SelectSubset<T, GiveawayEntryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GiveawayEntries and returns the data updated in the database.
+     * @param {GiveawayEntryUpdateManyAndReturnArgs} args - Arguments to update many GiveawayEntries.
+     * @example
+     * // Update many GiveawayEntries
+     * const giveawayEntry = await prisma.giveawayEntry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GiveawayEntries and only return the `id`
+     * const giveawayEntryWithIdOnly = await prisma.giveawayEntry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GiveawayEntryUpdateManyAndReturnArgs>(args: SelectSubset<T, GiveawayEntryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GiveawayEntry.
+     * @param {GiveawayEntryUpsertArgs} args - Arguments to update or create a GiveawayEntry.
+     * @example
+     * // Update or create a GiveawayEntry
+     * const giveawayEntry = await prisma.giveawayEntry.upsert({
+     *   create: {
+     *     // ... data to create a GiveawayEntry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GiveawayEntry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GiveawayEntryUpsertArgs>(args: SelectSubset<T, GiveawayEntryUpsertArgs<ExtArgs>>): Prisma__GiveawayEntryClient<$Result.GetResult<Prisma.$GiveawayEntryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GiveawayEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryCountArgs} args - Arguments to filter GiveawayEntries to count.
+     * @example
+     * // Count the number of GiveawayEntries
+     * const count = await prisma.giveawayEntry.count({
+     *   where: {
+     *     // ... the filter for the GiveawayEntries we want to count
+     *   }
+     * })
+    **/
+    count<T extends GiveawayEntryCountArgs>(
+      args?: Subset<T, GiveawayEntryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GiveawayEntryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GiveawayEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GiveawayEntryAggregateArgs>(args: Subset<T, GiveawayEntryAggregateArgs>): Prisma.PrismaPromise<GetGiveawayEntryAggregateType<T>>
+
+    /**
+     * Group by GiveawayEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GiveawayEntryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GiveawayEntryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GiveawayEntryGroupByArgs['orderBy'] }
+        : { orderBy?: GiveawayEntryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GiveawayEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGiveawayEntryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GiveawayEntry model
+   */
+  readonly fields: GiveawayEntryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GiveawayEntry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GiveawayEntryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GiveawayEntry model
+   */
+  interface GiveawayEntryFieldRefs {
+    readonly id: FieldRef<"GiveawayEntry", 'String'>
+    readonly name: FieldRef<"GiveawayEntry", 'String'>
+    readonly email: FieldRef<"GiveawayEntry", 'String'>
+    readonly boatBrand: FieldRef<"GiveawayEntry", 'String'>
+    readonly marketingConsent: FieldRef<"GiveawayEntry", 'Boolean'>
+    readonly createdAt: FieldRef<"GiveawayEntry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GiveawayEntry findUnique
+   */
+  export type GiveawayEntryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which GiveawayEntry to fetch.
+     */
+    where: GiveawayEntryWhereUniqueInput
+  }
+
+  /**
+   * GiveawayEntry findUniqueOrThrow
+   */
+  export type GiveawayEntryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which GiveawayEntry to fetch.
+     */
+    where: GiveawayEntryWhereUniqueInput
+  }
+
+  /**
+   * GiveawayEntry findFirst
+   */
+  export type GiveawayEntryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which GiveawayEntry to fetch.
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiveawayEntries to fetch.
+     */
+    orderBy?: GiveawayEntryOrderByWithRelationInput | GiveawayEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiveawayEntries.
+     */
+    cursor?: GiveawayEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiveawayEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiveawayEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiveawayEntries.
+     */
+    distinct?: GiveawayEntryScalarFieldEnum | GiveawayEntryScalarFieldEnum[]
+  }
+
+  /**
+   * GiveawayEntry findFirstOrThrow
+   */
+  export type GiveawayEntryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which GiveawayEntry to fetch.
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiveawayEntries to fetch.
+     */
+    orderBy?: GiveawayEntryOrderByWithRelationInput | GiveawayEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GiveawayEntries.
+     */
+    cursor?: GiveawayEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiveawayEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiveawayEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GiveawayEntries.
+     */
+    distinct?: GiveawayEntryScalarFieldEnum | GiveawayEntryScalarFieldEnum[]
+  }
+
+  /**
+   * GiveawayEntry findMany
+   */
+  export type GiveawayEntryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter, which GiveawayEntries to fetch.
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GiveawayEntries to fetch.
+     */
+    orderBy?: GiveawayEntryOrderByWithRelationInput | GiveawayEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GiveawayEntries.
+     */
+    cursor?: GiveawayEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GiveawayEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GiveawayEntries.
+     */
+    skip?: number
+    distinct?: GiveawayEntryScalarFieldEnum | GiveawayEntryScalarFieldEnum[]
+  }
+
+  /**
+   * GiveawayEntry create
+   */
+  export type GiveawayEntryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * The data needed to create a GiveawayEntry.
+     */
+    data: XOR<GiveawayEntryCreateInput, GiveawayEntryUncheckedCreateInput>
+  }
+
+  /**
+   * GiveawayEntry createMany
+   */
+  export type GiveawayEntryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GiveawayEntries.
+     */
+    data: GiveawayEntryCreateManyInput | GiveawayEntryCreateManyInput[]
+  }
+
+  /**
+   * GiveawayEntry createManyAndReturn
+   */
+  export type GiveawayEntryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * The data used to create many GiveawayEntries.
+     */
+    data: GiveawayEntryCreateManyInput | GiveawayEntryCreateManyInput[]
+  }
+
+  /**
+   * GiveawayEntry update
+   */
+  export type GiveawayEntryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * The data needed to update a GiveawayEntry.
+     */
+    data: XOR<GiveawayEntryUpdateInput, GiveawayEntryUncheckedUpdateInput>
+    /**
+     * Choose, which GiveawayEntry to update.
+     */
+    where: GiveawayEntryWhereUniqueInput
+  }
+
+  /**
+   * GiveawayEntry updateMany
+   */
+  export type GiveawayEntryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GiveawayEntries.
+     */
+    data: XOR<GiveawayEntryUpdateManyMutationInput, GiveawayEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which GiveawayEntries to update
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * Limit how many GiveawayEntries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiveawayEntry updateManyAndReturn
+   */
+  export type GiveawayEntryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * The data used to update GiveawayEntries.
+     */
+    data: XOR<GiveawayEntryUpdateManyMutationInput, GiveawayEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which GiveawayEntries to update
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * Limit how many GiveawayEntries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiveawayEntry upsert
+   */
+  export type GiveawayEntryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * The filter to search for the GiveawayEntry to update in case it exists.
+     */
+    where: GiveawayEntryWhereUniqueInput
+    /**
+     * In case the GiveawayEntry found by the `where` argument doesn't exist, create a new GiveawayEntry with this data.
+     */
+    create: XOR<GiveawayEntryCreateInput, GiveawayEntryUncheckedCreateInput>
+    /**
+     * In case the GiveawayEntry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GiveawayEntryUpdateInput, GiveawayEntryUncheckedUpdateInput>
+  }
+
+  /**
+   * GiveawayEntry delete
+   */
+  export type GiveawayEntryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+    /**
+     * Filter which GiveawayEntry to delete.
+     */
+    where: GiveawayEntryWhereUniqueInput
+  }
+
+  /**
+   * GiveawayEntry deleteMany
+   */
+  export type GiveawayEntryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GiveawayEntries to delete
+     */
+    where?: GiveawayEntryWhereInput
+    /**
+     * Limit how many GiveawayEntries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GiveawayEntry without action
+   */
+  export type GiveawayEntryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GiveawayEntry
+     */
+    select?: GiveawayEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GiveawayEntry
+     */
+    omit?: GiveawayEntryOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -12438,6 +13535,18 @@ export namespace Prisma {
   };
 
   export type BoatPartMappingScalarFieldEnum = (typeof BoatPartMappingScalarFieldEnum)[keyof typeof BoatPartMappingScalarFieldEnum]
+
+
+  export const GiveawayEntryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    boatBrand: 'boatBrand',
+    marketingConsent: 'marketingConsent',
+    createdAt: 'createdAt'
+  };
+
+  export type GiveawayEntryScalarFieldEnum = (typeof GiveawayEntryScalarFieldEnum)[keyof typeof GiveawayEntryScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13251,6 +14360,63 @@ export namespace Prisma {
     productId?: StringWithAggregatesFilter<"BoatPartMapping"> | string
     posX?: FloatWithAggregatesFilter<"BoatPartMapping"> | number
     posY?: FloatWithAggregatesFilter<"BoatPartMapping"> | number
+  }
+
+  export type GiveawayEntryWhereInput = {
+    AND?: GiveawayEntryWhereInput | GiveawayEntryWhereInput[]
+    OR?: GiveawayEntryWhereInput[]
+    NOT?: GiveawayEntryWhereInput | GiveawayEntryWhereInput[]
+    id?: StringFilter<"GiveawayEntry"> | string
+    name?: StringFilter<"GiveawayEntry"> | string
+    email?: StringFilter<"GiveawayEntry"> | string
+    boatBrand?: StringFilter<"GiveawayEntry"> | string
+    marketingConsent?: BoolFilter<"GiveawayEntry"> | boolean
+    createdAt?: DateTimeFilter<"GiveawayEntry"> | Date | string
+  }
+
+  export type GiveawayEntryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    boatBrand?: SortOrder
+    marketingConsent?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiveawayEntryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    email?: string
+    AND?: GiveawayEntryWhereInput | GiveawayEntryWhereInput[]
+    OR?: GiveawayEntryWhereInput[]
+    NOT?: GiveawayEntryWhereInput | GiveawayEntryWhereInput[]
+    name?: StringFilter<"GiveawayEntry"> | string
+    boatBrand?: StringFilter<"GiveawayEntry"> | string
+    marketingConsent?: BoolFilter<"GiveawayEntry"> | boolean
+    createdAt?: DateTimeFilter<"GiveawayEntry"> | Date | string
+  }, "id" | "email">
+
+  export type GiveawayEntryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    boatBrand?: SortOrder
+    marketingConsent?: SortOrder
+    createdAt?: SortOrder
+    _count?: GiveawayEntryCountOrderByAggregateInput
+    _max?: GiveawayEntryMaxOrderByAggregateInput
+    _min?: GiveawayEntryMinOrderByAggregateInput
+  }
+
+  export type GiveawayEntryScalarWhereWithAggregatesInput = {
+    AND?: GiveawayEntryScalarWhereWithAggregatesInput | GiveawayEntryScalarWhereWithAggregatesInput[]
+    OR?: GiveawayEntryScalarWhereWithAggregatesInput[]
+    NOT?: GiveawayEntryScalarWhereWithAggregatesInput | GiveawayEntryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GiveawayEntry"> | string
+    name?: StringWithAggregatesFilter<"GiveawayEntry"> | string
+    email?: StringWithAggregatesFilter<"GiveawayEntry"> | string
+    boatBrand?: StringWithAggregatesFilter<"GiveawayEntry"> | string
+    marketingConsent?: BoolWithAggregatesFilter<"GiveawayEntry"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"GiveawayEntry"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -14092,6 +15258,69 @@ export namespace Prisma {
     posY?: FloatFieldUpdateOperationsInput | number
   }
 
+  export type GiveawayEntryCreateInput = {
+    id?: string
+    name: string
+    email: string
+    boatBrand: string
+    marketingConsent: boolean
+    createdAt?: Date | string
+  }
+
+  export type GiveawayEntryUncheckedCreateInput = {
+    id?: string
+    name: string
+    email: string
+    boatBrand: string
+    marketingConsent: boolean
+    createdAt?: Date | string
+  }
+
+  export type GiveawayEntryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    boatBrand?: StringFieldUpdateOperationsInput | string
+    marketingConsent?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiveawayEntryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    boatBrand?: StringFieldUpdateOperationsInput | string
+    marketingConsent?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiveawayEntryCreateManyInput = {
+    id?: string
+    name: string
+    email: string
+    boatBrand: string
+    marketingConsent: boolean
+    createdAt?: Date | string
+  }
+
+  export type GiveawayEntryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    boatBrand?: StringFieldUpdateOperationsInput | string
+    marketingConsent?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GiveawayEntryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    boatBrand?: StringFieldUpdateOperationsInput | string
+    marketingConsent?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -14770,6 +15999,33 @@ export namespace Prisma {
   export type BoatPartMappingSumOrderByAggregateInput = {
     posX?: SortOrder
     posY?: SortOrder
+  }
+
+  export type GiveawayEntryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    boatBrand?: SortOrder
+    marketingConsent?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiveawayEntryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    boatBrand?: SortOrder
+    marketingConsent?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type GiveawayEntryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    email?: SortOrder
+    boatBrand?: SortOrder
+    marketingConsent?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type SalesRepCreateNestedOneWithoutUsersInput = {

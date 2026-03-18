@@ -140,3 +140,12 @@ model BoatPartMapping {
   posX      Float // percentage position on diagram
   posY      Float
 }
+
+model GiveawayEntry {
+  id               String   @id @default(uuid())
+  name             String
+  email            String   @unique
+  boatBrand        String
+  marketingConsent Boolean
+  createdAt        DateTime @default(now())
+}

@@ -233,6 +233,15 @@ exports.Prisma.BoatPartMappingScalarFieldEnum = {
   posY: 'posY'
 };
 
+exports.Prisma.GiveawayEntryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  boatBrand: 'boatBrand',
+  marketingConsent: 'marketingConsent',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -253,7 +262,8 @@ exports.Prisma.ModelName = {
   Quote: 'Quote',
   QuoteItem: 'QuoteItem',
   ContactSubmission: 'ContactSubmission',
-  BoatPartMapping: 'BoatPartMapping'
+  BoatPartMapping: 'BoatPartMapping',
+  GiveawayEntry: 'GiveawayEntry'
 };
 
 /**
